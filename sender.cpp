@@ -52,13 +52,49 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 
 	key_t key = ftok("keyfile.txt", 'a'); //Generates a unique key from the pathname and project identifier
 
+	if(key == -1) {
+
+		perror("Failure to genarate file key.");
+
+		exit(-1);
+
+	}
+
+
+
 	shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, 0666 | IPC_CREAT); //Returns an identifier for the shared memory segment
 
+	if(shmid == -1) {
+
+		perror("Failure to return identifier to shared memory.");
+
+		exit(-1);
+
+	}
+
+
+
 	sharedMemPtr = shmat(shmid, (void*) 0, 0); //Attaches to shared memory
+
+	if(shmid == -1) {
+
+		perror("Failure to attach to shared memory.");
+
+		exit(-1);
+
+	}
 
 
 
 	msqid = msgget(key, 0666 | IPC_CREAT); //Returns an identifier for the message queue
+
+	if(shmid == -1) {
+
+		perror("Failure to return identifier to message queue.");
+
+		exit(-1);
+
+	}
 
 }
 
@@ -82,11 +118,39 @@ void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 
 {
 
-	shmdt(sharedMemPtr); //Detaches from shared memory
+	//Detaches from shared memory
 
-	shmctl(shmid, IPC_RMID, NULL);
+	if(shmdt(sharedMemPtr) == -1) {
 
-	msgctl(msqid, IPC_RMID, NULL);
+		perror("Failure to detached from shared memory");
+
+		exit(-1);
+
+	}
+
+
+
+	//Destroys shared memory
+
+	if(shmctl(shmid, IPC_RMID, NULL) == -1) {
+
+		perror("Failure to detroy shared memory");
+
+		exit(-1);
+
+	}
+
+
+
+	//Destroy message queue
+
+	if(msgctl(msqid, IPC_RMID, NULL) == -1) {
+
+		perror("Failure to detroy message queue");
+
+		exit(-1);
+
+	}
 
 }
 
@@ -164,17 +228,29 @@ void send(const char* fileName)
 
 
 
-
-
 		//Pass message to message queue of type SENDER_DATA_TYPE.
 
 		sndMsg.mtype = SENDER_DATA_TYPE;
 
-		msgsnd(msqid, &sndMsg, sizeof(sndMsg), 0);
+		if(msgsnd(msqid, &sndMsg, sizeof(sndMsg), 0) == -1) {
+
+
+
+		}
+
+
 
 	  //Recieve message from queue. Process is blocked until a message of the desired type is place in the queue or the queue is removed from the system.
 
-		msgrcv(msqid, &rcvMsg, sizeof(message), RECV_DONE_TYPE, 0);
+		if(msgrcv(msqid, &rcvMsg, sizeof(rcvMsg), RECV_DONE_TYPE, 0) == -1) {
+
+			perror("Failed to recieve message from reciever.");
+
+			exit(-1);
+
+		}
+
+
 
 	}
 
@@ -184,7 +260,13 @@ void send(const char* fileName)
 
 	//Sends message with message type of SENDER_DATA_TYPE and size 0 to let reciever know that we are finished.
 
-	msgsnd(msqid, &sndMsg, 0, 0);
+	if(msgsnd(msqid, &sndMsg, 0, 0) == -1) {
+
+		perror("Failed to send message to message queue.");
+
+		exit(-1);
+
+	}
 
 
 
@@ -243,5 +325,4 @@ int main(int argc, char** argv)
 	return 0;
 
 }
-
 
