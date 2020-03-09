@@ -1,3 +1,5 @@
+
+
 #include <sys/shm.h>
 
 #include <sys/msg.h>
@@ -9,6 +11,8 @@
 #include <unistd.h>
 
 #include "msg.h"    /* For the message struct */
+
+#include <iostream>
 
 
 
@@ -79,6 +83,10 @@ void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 {
 
 	shmdt(sharedMemPtr); //Detaches from shared memory
+
+	shmctl(shmid, IPC_RMID, NULL);
+
+	msgctl(msqid, IPC_RMID, NULL);
 
 }
 
@@ -164,8 +172,6 @@ void send(const char* fileName)
 
 		msgsnd(msqid, &sndMsg, sizeof(sndMsg), 0);
 
-
-
 	  //Recieve message from queue. Process is blocked until a message of the desired type is place in the queue or the queue is removed from the system.
 
 		msgrcv(msqid, &rcvMsg, sizeof(message), RECV_DONE_TYPE, 0);
@@ -237,4 +243,5 @@ int main(int argc, char** argv)
 	return 0;
 
 }
+
 
