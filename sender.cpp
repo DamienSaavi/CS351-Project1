@@ -202,15 +202,15 @@ void send(const char* fileName)
 
 		}
 
-
-
 		//Pass message to message queue of type SENDER_DATA_TYPE.
 
 		sndMsg.mtype = SENDER_DATA_TYPE;
 
 		if(msgsnd(msqid, &sndMsg, sizeof(sndMsg), 0) == -1) {
 
+			perror("Failed to send message to message queue.");
 
+			exit(-1);
 
 		}
 
@@ -225,6 +225,10 @@ void send(const char* fileName)
 			exit(-1);
 
 		}
+
+
+
+
 
 
 
@@ -301,4 +305,5 @@ int main(int argc, char** argv)
 	return 0;
 
 }
+
 
