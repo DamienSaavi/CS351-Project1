@@ -12,8 +12,6 @@
 
 #include "msg.h"    /* For the message struct */
 
-#include <iostream>
-
 
 
 /* The size of the shared memory chunk */
@@ -176,8 +174,6 @@ void send(const char* fileName)
 
 	}
 
-
-
 	/* Read the whole file */
 
 	while(!feof(fp))
@@ -202,11 +198,13 @@ void send(const char* fileName)
 
 		}
 
+
+
 		//Pass message to message queue of type SENDER_DATA_TYPE.
 
 		sndMsg.mtype = SENDER_DATA_TYPE;
 
-		if(msgsnd(msqid, &sndMsg, sizeof(sndMsg), 0) == -1) {
+		if(msgsnd(msqid, &sndMsg, sndMsg.size, 0) == -1) {
 
 			perror("Failed to send message to message queue.");
 
@@ -225,10 +223,6 @@ void send(const char* fileName)
 			exit(-1);
 
 		}
-
-
-
-
 
 
 
@@ -305,5 +299,4 @@ int main(int argc, char** argv)
 	return 0;
 
 }
-
 
