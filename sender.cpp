@@ -128,30 +128,6 @@ void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 
 	}
 
-
-
-	//Destroys shared memory
-
-	if(shmctl(shmid, IPC_RMID, NULL) == -1) {
-
-		perror("Failure to detroy shared memory");
-
-		exit(-1);
-
-	}
-
-
-
-	//Destroy message queue
-
-	if(msgctl(msqid, IPC_RMID, NULL) == -1) {
-
-		perror("Failure to detroy message queue");
-
-		exit(-1);
-
-	}
-
 }
 
 
