@@ -1,15 +1,22 @@
 Group Members
     Damien Mousavi: damiensaavi@gmail.com
                     949-836-6097
+                    Section 2
+                    
     Tyler Wright:   tyler.wright2@csu.fullerton.edu
                     949-433-6340
+                    Section 2
+                    
     Adam Nelson:    adamnelson92@fullerton.edu
                     714-400-4084
+                    Section 2
 
 
-RESOURCES
-    Message queues: https://www.geeksforgeeks.org/ipc-using-message-queues/
-    Shared memory: https://www.geeksforgeeks.org/ipc-shared-memory/
+How to Run:
 
 
-Due 11:00 pm on Friday, March 13 2020
+ Collaboration: This was mostly done of texts and in class
+ 
+ Damien: All of receiver.cpp, created github repository
+ Tyler: Program diagram, makefile, readme file
+ Adam: All of sender.cpp, pseudocode design
