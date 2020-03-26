@@ -126,7 +126,7 @@ void ctrlCSignal(int signal)
 	cleanUp(shmid, msqid, sharedMemPtr);
 	
 	/*exit program*/
-	exit(0)
+	exit(0);
 }
 
 int main(int argc, char** argv)
