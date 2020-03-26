@@ -129,11 +129,7 @@ void ctrlCSignal(int signal)
 int main(int argc, char** argv)
 {
 	
-	/* TODO: Install a signal handler (see signaldemo.cpp sample file).
- 	 * In a case user presses Ctrl-c your program should delete message
- 	 * queues and shared memory before exiting. You may add the cleaning functionality
- 	 * in ctrlCSignal().
- 	 */
+	signal(SIGINT, ctrlCSignal); 
 				
 	/* Initialize */
 	init(shmid, msqid, sharedMemPtr);
