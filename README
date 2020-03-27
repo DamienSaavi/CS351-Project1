@@ -39,7 +39,10 @@ How to Run:
 1) Extract all contents of .tar to the same directory. 
 2) Navigate to that directory through the terminal (i.e. cd Desktop/).
 3) Enter 'sudo make' in command line and press enter.
-4) Mission Accomplished!
+4) In the same terminal enter './sender.o keyfile.txt' and press enter.
+5) Open up a second terminal. Navigate to the same directory as before.
+6) In this terminal enter the command './recv.o' and press enter.
+7) Mission Accomplished!
 
 Extra Credit: Not implemented
 
