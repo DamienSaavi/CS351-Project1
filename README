@@ -32,8 +32,8 @@ sender.cpp
     -C++ sender file
 receiver.cpp
     -C++ reciever file.
-testProof.png
-    -Screenshot of successful execution.
+TestProof
+    -Folder containing 6 .png screenshots demonstrating proof of testing.
 
 How to Run: 
 1) Extract all contents of .tar to the same directory. 
