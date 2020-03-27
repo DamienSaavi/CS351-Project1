@@ -41,7 +41,7 @@ How to Run:
 3) Enter 'sudo make' in command line and press enter.
 4) In the same terminal enter './sender.o keyfile.txt' and press enter.
 5) Open up a second terminal. Navigate to the same directory as before.
-6) In this terminal enter the command './recv.o' and press enter.
+6) In this terminal enter the command './receiver.o' and press enter.
 7) Mission Accomplished!
 
 Extra Credit: Not implemented
