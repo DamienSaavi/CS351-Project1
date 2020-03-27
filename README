@@ -14,11 +14,26 @@ Group Members
 Language Used: C++
 
 Files Included:
+Design of Assignment1.pdf
+    -Analysis of the design of this project
+Makefile
+    -Makefile to compile and run both cpp files
+Pseudoreceiver.pdf
+    -Pseudocode for receiver.cpp
+Pseudosender.pdf
+    -Pseudocode for sender.cpp
+README
+    -This file
 keyfile.txt
+    -File to read
 msg.h
+    -C++ header file
 sender.cpp
+    -C++ sender file
 receiver.cpp
-
+    -C++ reciever file.
+testProof.png
+    -Screenshot of successful execution.
 
 How to Run: 
 1) Extract all contents of .tar to the same directory. 
