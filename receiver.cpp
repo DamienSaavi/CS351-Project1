@@ -131,7 +131,6 @@ void ctrlCSignal(int signal)
 
 int main(int argc, char** argv)
 {
-	
 	signal(SIGINT, ctrlCSignal); 
 				
 	/* Initialize */

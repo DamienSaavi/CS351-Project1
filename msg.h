@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /* The information type */ 
 #define SENDER_DATA_TYPE 1
 

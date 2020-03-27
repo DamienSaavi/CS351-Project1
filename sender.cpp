@@ -262,8 +262,6 @@ int main(int argc, char** argv)
 
 {
 
-
-
 	/* Check the command line arguments */
 
 	if(argc < 2)

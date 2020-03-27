@@ -1,18 +1,13 @@
-CC=g++
-CFLAGS=-c -Wall
-DEPS = msg.h
+CXX=g++
+CXXFLAGS= -Wall
 
-all: sender_receiver
+all: receiver.o sender.o
 
-sender_receiver: sender.o recv.o
-	$(CC) $(CFLAGS)  sender.o recv.o -o sender_receiver
+sender.o: sender.cpp msg.h
+	$(CXX) $(CXXFLAGS) sender.cpp -o sender.o
 
-sender.o: sender.cpp keyfile.txt
-	$(CC) $(CFLAGS) -c sender.cpp keyfile.txt
-
-recv.o: recv.cpp
-	$(CC) $(CFLAGS) -c recv.cpp
+receiver.o: receiver.cpp msg.h
+	$(CXX) $(CXXFLAGS) receiver.cpp -o receiver.o
 
 clean:
-	rm -rf *o sender_receiver
-
+	rm -rf *o
