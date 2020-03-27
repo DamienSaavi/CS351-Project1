@@ -13,8 +13,18 @@ Group Members
 
 Language Used: C++
 
+Files Included:
+keyfile.txt
+msg.h
+sender.cpp
+receiver.cpp
 
-How to Run:
+
+How to Run: 
+1) Extract all contents of .tar to the same directory. 
+2) Navigate to that directory through the terminal (i.e. cd Desktop/).
+3) Enter 'sudo make' in command line and press enter.
+4) Mission Accomplished!
 
 Extra Credit: Not implemented
 
